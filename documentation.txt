@@ -1,0 +1,20 @@
+1. Vad gör "ADD employees.sql /docker-entrypoint-initdb.d/employees.sql" i er Dockerfile? 
+
+Svar: 
+This line adds the “employees.sql” file to a destination inside the container. 
+In this case, the “/docker-entrypoint-initdb.d/” directory. MariaDB will work on the SQL files that exist 
+in that directory. So “employees.sql” contains SQL statements to populate and create a database 
+called “employees.sql” 
+
+2: Hur löste ni delen "Skapa/läs data från databasen med mariadb.py". Skriv kortfattat nedan. 
+
+Svar: 
+Istället för localhost använde vi IP adressen som Containern kördes i, dvs: 172.17.0.2
+vi hittade denna ip adress genom:
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 46db9e6310dd
+Därefter ändrade vi till denna host i mariadb.py filen.
+
+3: Stötte ni på andra problem och hur löste ni dessa? Svara nedan.
+
+Svar: 
+Hade inte mysql-connector-python dependencien.

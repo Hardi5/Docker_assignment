@@ -1,0 +1,11 @@
+docker build -t employees .
+
+docker run --detach --name employees a616345a7e42
+
+pip install mysql-connector-python
+
+docker inspect a616345a7e42
+
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 46db9e6310dd
+
+mysql -h 172.17.0.2 -P 3306 -u hardi -p
